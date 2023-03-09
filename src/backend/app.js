@@ -1,3 +1,4 @@
+// require("dotenv").config();
 const express = require("express");
 const app = express();
 const router = express.Router();
@@ -7,6 +8,8 @@ const mealsRouter = require("./api/meals");
 const buildPath = path.join(__dirname, "../../dist");
 const port = process.env.PORT || 3000;
 const cors = require("cors");
+
+const knex = require("./database");
 
 // For week4 no need to look into this!
 // Serve the built client html
@@ -20,11 +23,85 @@ app.use(express.json());
 app.use(cors());
 
 router.use("/meals", mealsRouter);
+// Respond with all meals in the future (relative to the when datetime)
+app.get("/future-meals", (req, res) => {
+  knex
+    .raw("SELECT * FROM Meal WHERE 'when'>'GETDATE()'")
+    .then((rows) => {
+      const jsonResponce = JSON.stringify(rows);
+      res.send(jsonResponce);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).end("Internal Server Error");
+    });
+});
+
+// Respond with all meals in the past (relative to the when datetime)
+app.get("/past-meals", (req, res) => {
+  knex
+    .raw("SELECT * FROM Meal WHERE 'when'<'GETDATE()'")
+    .then((rows) => {
+      const jsonResponce = JSON.stringify(rows);
+      res.send(jsonResponce);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).end("Internal Server Error");
+    });
+});
+
+//Respond with all meals sorted by ID
+app.get("/all-meals", (req, res) => {
+  knex
+    .raw("SELECT * FROM Meal ORDER BY id")
+    .then((rows) => {
+      const jsonResponce = JSON.stringify(rows);
+      res.send(jsonResponce);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).end("Internal Server Error");
+    });
+});
+
+// Respond with the first meal (meaning with the minimum id)
+app.get("/first-meal", (req, res) => {
+  knex
+    .raw("SELECT * FROM Meal WHERE id = (SELECT MIN(id) FROM Meal)")
+    .then((rows) => {
+      const jsonResponce = JSON.stringify(rows);
+      res.send(jsonResponce);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).end("Internal Server Error");
+    });
+});
+
+// Respond with the last meal (meaning with the maximum id)
+app.get("/last-meal", (req, res) => {
+  knex
+    .raw("SELECT * FROM Meal WHERE id = (SELECT MAX(id) FROM Meal)")
+    .then((rows) => {
+      const jsonResponce = JSON.stringify(rows);
+      res.send(jsonResponce);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).end("Internal Server Error");
+    });
+});
+
+// How to import app.listen from server? Or should I just remove it from there? It doesn't work without lines 96-98
+app.listen(port, () => {
+  console.log(`Backend api available at ${process.env.API_PATH}`);
+});
 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
 } else {
-  throw "API_PATH is not set. Remember to set it in your .env file"
+  throw "API_PATH is not set. Remember to set it in your .env file";
 }
 
 // for the frontend. Will first be covered in the react class
