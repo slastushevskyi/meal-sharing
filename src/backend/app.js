@@ -97,11 +97,6 @@ app.get("/last-meal", (req, res) => {
     });
 });
 
-// How to import app.listen from server? Or should I just remove it from there? It doesn't work without lines 96-98
-app.listen(port, () => {
-  console.log(`Backend api available at ${process.env.API_PATH}`);
-});
-
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
 } else {
