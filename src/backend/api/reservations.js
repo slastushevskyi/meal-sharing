@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const knex = require("../database");
 
-//GET	Returns all meals
+//GET Returns all reservations
 router.get("/", async (req, res) => {
   try {
-    const data = await knex("Meal").select();
+    const data = await knex("Reservation").select();
     res.json(data);
   } catch (error) {
     console.error(error);
@@ -13,39 +13,39 @@ router.get("/", async (req, res) => {
   }
 });
 
-//POST Adds a new meal to the database
+//POST Adds a new reservation to the database
 router.post("/", async (req, res) => {
   try {
-    const newMeal = req.body;
-    const [id] = await knex("Meal").insert(newMeal);
+    const newReservation = req.body;
+    const [id] = await knex("Reservation").insert(newReservation);
     res.status(201).json({
-      message: "New Meal added successfully",
+      message: "New reservation added successfully",
     });
   } catch (error) {
-    res.status(500).json({ error: "Error while adding new Meal" });
+    res.status(500).json({ error: "Error while adding new reservation" });
     console.error(error);
   }
 });
 
-// GET	Returns the meal by id
+// GET Returns a reservation by id
 router.get("/:id", async (req, res) => {
   try {
     const requestedId = parseInt(req.params.id);
-    const mealIds = await knex("Meal").select("id");
-    const filteredMeal = mealIds.filter((meal) => {
-      for (const key in meal) {
-        const value = meal[key];
+    const reservationIds = await knex("Reservation").select("id");
+    const filteredReservation = reservationIds.filter((reservation) => {
+      for (const key in reservation) {
+        const value = reservation[key];
         if (value === requestedId) {
-          return meal;
+          return reservation;
         }
       }
     });
-    if (filteredMeal.length === 0) {
+    if (filteredReservation.length === 0) {
       res.status(404).end("Meal Id Not Found");
     } else {
-      const [{ id }] = filteredMeal;
-      const meal = await knex("Meal").select().where("id", id);
-      res.json({ data: meal });
+      const [{ id }] = filteredReservation;
+      const reservation = await knex("Reservation").select().where("id", id);
+      res.json({ data: reservation });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -56,18 +56,18 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const requestedId = parseInt(req.params.id);
-    const updatedMeal = req.body;
-    const updatedId = await knex("Meal")
+    const updatedReservation = req.body;
+    const updatedId = await knex("Reservation")
       .where("id", requestedId)
-      .update(updatedMeal);
+      .update(updatedReservation);
 
     if (updatedId) {
       res.status(202).json({
-        message: "Meal updated successfully",
+        message: "Reservation updated successfully",
       });
     } else {
       res.status(404).json({
-        message: "Meal not found",
+        message: "Reservation not found",
       });
     }
   } catch (error) {
@@ -78,14 +78,16 @@ router.put("/:id", async (req, res) => {
 // DELETE	Deletes the reservation by id
 router.delete("/:id", async (req, res) => {
   const requestedId = parseInt(req.params.id);
-  const deletedMeal = await knex("Meal").where("id", requestedId).del();
-  if (deletedMeal) {
+  const deletedReservation = await knex("Reservation")
+    .where("id", requestedId)
+    .del();
+  if (deletedReservation) {
     res.status(202).json({
-      message: "Meal deleted successfully",
+      message: "Reservation deleted successfully",
     });
   } else {
     res.status(404).json({
-      message: "Meal not found",
+      message: "Reservation not found",
     });
   }
 });
