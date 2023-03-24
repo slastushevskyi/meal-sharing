@@ -2,25 +2,27 @@ const express = require("express");
 const router = express.Router();
 const knex = require("../database");
 
-//GET Returns all reservations
+// GET Returns all reservations
 router.get("/", async (req, res) => {
   try {
     const data = await knex("Reservation").select();
-    res.json(data);
+    res.status(200).json(await data);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-//POST Adds a new reservation to the database
+// POST Adds a new reservation to the database
 router.post("/", async (req, res) => {
   try {
     const newReservation = req.body;
     const [id] = await knex("Reservation").insert(newReservation);
-    res.status(201).json({
-      message: "New reservation added successfully",
-    });
+    if ([id]) {
+      res.status(201).json({
+        message: "New reservation added successfully",
+      });
+    }
   } catch (error) {
     res.status(500).json({ error: "Error while adding new reservation" });
     console.error(error);
@@ -41,18 +43,18 @@ router.get("/:id", async (req, res) => {
       }
     });
     if (filteredReservation.length === 0) {
-      res.status(404).end("Meal Id Not Found");
+      res.status(404).end("Reservation Id Not Found");
     } else {
       const [{ id }] = filteredReservation;
       const reservation = await knex("Reservation").select().where("id", id);
-      res.json({ data: reservation });
+      res.status(200).json({ data: reservation });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// PUT	Updates the meal by id
+// PUT	Updates the reservation by id
 router.put("/:id", async (req, res) => {
   try {
     const requestedId = parseInt(req.params.id);
