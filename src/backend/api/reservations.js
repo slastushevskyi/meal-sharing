@@ -17,8 +17,8 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newReservation = req.body;
-    const [id] = await knex("Reservation").insert(newReservation);
-    if ([id]) {
+    const id = await knex("Reservation").insert(newReservation);
+    if (id) {
       res.status(201).json({
         message: "New reservation added successfully",
       });
@@ -33,22 +33,13 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const requestedId = parseInt(req.params.id);
-    const reservationIds = await knex("Reservation").select("id");
-    const filteredReservation = reservationIds.filter((reservation) => {
-      for (const key in reservation) {
-        const value = reservation[key];
-        if (value === requestedId) {
-          return reservation;
-        }
-      }
-    });
-    if (filteredReservation.length === 0) {
-      res.status(404).end("Reservation Id Not Found");
-    } else {
-      const [{ id }] = filteredReservation;
-      const reservation = await knex("Reservation").select().where("id", id);
-      res.status(200).json({ data: reservation });
+    const reservation = await knex("Reservation")
+      .select()
+      .where("id", requestedId);
+    if (!reservation.length) {
+      res.status(404).end(`Reservation Id: ${requestedId} Not Found`);
     }
+    res.status(200).json(reservation);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

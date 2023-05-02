@@ -6,7 +6,7 @@ const knex = require("../database");
 router.get("/", async (req, res) => {
   try {
     const data = await knex("Meal").select();
-    res.status(200).json(await data);
+    res.status(200).json(data);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -17,8 +17,8 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newMeal = req.body;
-    const [id] = await knex("Meal").insert(newMeal);
-    if ([id]) {
+    const id = await knex("Meal").insert(newMeal);
+    if (id) {
       res.status(201).json({
         message: "New Meal added successfully",
       });
@@ -33,22 +33,11 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const requestedId = parseInt(req.params.id);
-    const mealIds = await knex("Meal").select("id");
-    const filteredMeal = mealIds.filter((meal) => {
-      for (const key in meal) {
-        const value = meal[key];
-        if (value === requestedId) {
-          return meal;
-        }
-      }
-    });
-    if (filteredMeal.length === 0) {
-      res.status(404).end("Meal Id Not Found");
-    } else {
-      const [{ id }] = filteredMeal;
-      const meal = await knex("Meal").select().where("id", id);
-      res.status(200).json({ data: meal });
+    const meal = await knex("Meal").select().where("id", requestedId);
+    if (!meal.length) {
+      res.status(404).end(`Meal Id: ${requestedId} Not Found`);
     }
+    res.status(200).json(meal);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
