@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MealListItem from "./MealListItem";
+import MealItem from "./MealItem";
 
 const MealListComponent = () => {
   const [meals, setMeals] = useState([]);
@@ -15,9 +15,9 @@ const MealListComponent = () => {
     return <p>Loading...</p>;
   }
 
-  return meals.map((item) => (
-    <div key={item.id}>
-      <MealListItem item={item} />
+  return meals.map((meal) => (
+    <div className="meal_div" key={meal.id}>
+      <MealItem meal={meal} />
     </div>
   ));
 };

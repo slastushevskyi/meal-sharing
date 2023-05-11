@@ -7,6 +7,7 @@ function App() {
   return (
     <Router>
       <Route exact path="/all-meals">
+        <h1>Meal-sharing app</h1>
         <MealListComponent />
       </Route>
       <Route exact path="/">
