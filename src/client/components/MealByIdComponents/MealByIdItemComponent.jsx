@@ -1,6 +1,7 @@
 import React from "react";
 import MealReservationComponent from "./MealReservationComponent";
 import ReviewComponent from "../ReviewComponents/ReviewComponent";
+import PropTypes from "prop-types";
 
 const MealByIdItemComponent = ({ meal }) => {
   return (
@@ -14,6 +15,10 @@ const MealByIdItemComponent = ({ meal }) => {
       <ReviewComponent meal={meal} />
     </>
   );
+};
+
+MealByIdItemComponent.propTypes = {
+  meal: PropTypes.object.isRequired,
 };
 
 export default MealByIdItemComponent;

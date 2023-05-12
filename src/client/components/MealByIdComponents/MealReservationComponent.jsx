@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReservationFormComponent from "./ReservationFormComponent";
+import PropTypes from "prop-types";
 
 const MealReservationComponent = ({ meal }) => {
   const [name, setName] = useState("");
@@ -78,6 +79,10 @@ const MealReservationComponent = ({ meal }) => {
       something else!
     </p>
   );
+};
+
+MealReservationComponent.propTypes = {
+  meal: PropTypes.object.isRequired,
 };
 
 export default MealReservationComponent;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const AllMealListItem = ({ meal }) => {
   return (
@@ -13,6 +14,10 @@ const AllMealListItem = ({ meal }) => {
       </a>
     </>
   );
+};
+
+AllMealListItem.propTypes = {
+  meal: PropTypes.object.isRequired,
 };
 
 export default AllMealListItem;

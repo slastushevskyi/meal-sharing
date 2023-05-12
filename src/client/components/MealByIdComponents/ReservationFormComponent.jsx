@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ReservationFormComponent = ({
   availableMeal,
@@ -68,6 +69,19 @@ const ReservationFormComponent = ({
       </form>
     </div>
   );
+};
+
+ReservationFormComponent.propTypes = {
+  availableMeal: PropTypes.array.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  setName: PropTypes.func.isRequired,
+  setEmail: PropTypes.func.isRequired,
+  setPhone: PropTypes.func.isRequired,
+  setAmount: PropTypes.func.isRequired,
 };
 
 export default ReservationFormComponent;

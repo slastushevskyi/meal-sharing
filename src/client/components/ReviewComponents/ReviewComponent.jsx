@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReviewFormComponent from "./ReviewFormComponent";
+import PropTypes from "prop-types";
 
 const ReviewComponent = ({ meal }) => {
   const [clicked, setClicked] = useState(false);
@@ -31,6 +32,10 @@ const ReviewComponent = ({ meal }) => {
       )}
     </div>
   );
+};
+
+ReviewComponent.propTypes = {
+  meal: PropTypes.object.isRequired,
 };
 
 export default ReviewComponent;

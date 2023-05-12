@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
+import PropTypes from "prop-types";
 
 const ReviewFormComponent = ({ meal }) => {
   const [title, setTitle] = useState("");
@@ -84,6 +85,10 @@ const ReviewFormComponent = ({ meal }) => {
       </form>
     </div>
   );
+};
+
+ReviewFormComponent.propTypes = {
+  meal: PropTypes.object.isRequired,
 };
 
 export default ReviewFormComponent;
