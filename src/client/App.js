@@ -6,6 +6,7 @@ import HeaderComponent from "./components/MainComponents/HeaderComponent";
 import FooterComponent from "./components/MainComponents/FooterComponent";
 import MainPageMealComponent from "./components/MealComponents/MainPageMealComponents/MainPageMealComponent";
 import MealByIdComponent from "./components/MealByIdComponents/MealByIdComponent";
+import AllReviewsComponent from "./components/ReviewComponents/AllReviewsComponent";
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
       <Route exact path="/meals/:id">
         <HeaderComponent />
         <MealByIdComponent />
+        <FooterComponent />
+      </Route>
+      <Route exact path="/reviews">
+        <HeaderComponent />
+        <AllReviewsComponent />
         <FooterComponent />
       </Route>
       <Route exact path="/lol">
