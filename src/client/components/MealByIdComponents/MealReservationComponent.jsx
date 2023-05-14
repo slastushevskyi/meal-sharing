@@ -7,18 +7,15 @@ const MealReservationComponent = ({ meal }) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [amount, setAmount] = useState("");
+  const [fetchedAvailableMeals, setFetchedAvailableMeals] = useState([]);
+  const [reviewSend, setReviewSend] = useState(false);
   // meal id from props
   const id = meal.id;
-  const currentDate = new Date();
-  // Have to cut out milliseconds with slice and replace T to space
-  // so it could fit to the sql format
-  const createdDate = currentDate.toISOString().slice(0, 19).replace("T", " ");
-  const [fetchedAvailableMeals, setFetchedAvailableMeals] = useState([]);
   // Checking if current meal in list of meals with available reservations
   const availableMeal = fetchedAvailableMeals.filter((meal) => meal.id === id);
-  const [reviewSend, setReviewSend] = useState(false);
 
   // Fetching new array of meals only with available reservations
+  // And useEffect update immediately amount of available reservations when a reservation is sent
   useEffect(() => {
     fetch("http://localhost:5050/api/meals?availableReservations=true")
       .then((response) => response.json())
@@ -35,6 +32,13 @@ const MealReservationComponent = ({ meal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const currentDate = new Date();
+    // Have to cut out milliseconds with slice and replace T to space
+    // so it could fit to the sql format
+    const createdDate = currentDate
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ");
     const reservationData = {
       contact_name: name,
       contact_email: email,

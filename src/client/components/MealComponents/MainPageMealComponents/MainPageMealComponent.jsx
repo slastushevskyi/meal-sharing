@@ -20,7 +20,7 @@ const MainPageMealComponent = () => {
       <div className="main_meals_div">
         <div className="about_meals">
           <p>
-            "Meals are an essential part of our daily lives, providing us with
+            Meals are an essential part of our daily lives, providing us with
             the necessary sustenance and energy to carry out our daily
             activities. A well-balanced meal contains a variety of nutrients,
             including carbohydrates, proteins, fats, vitamins, and minerals. It
@@ -30,7 +30,7 @@ const MainPageMealComponent = () => {
             meal options available to suit your taste buds and dietary
             requirements. So, whether you prefer home-cooked meals or eating
             out, make sure to include a balanced and nutritious diet in your
-            daily routine."
+            daily routine
           </p>
           <span className="main_meals_btn_border">
             <a className="main_meals_btn" href="http://localhost:3000/meals">
