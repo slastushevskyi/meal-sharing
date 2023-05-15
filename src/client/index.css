@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 @import "theme.css";
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap");
 * {
   font-family: "Montserrat", sans-serif;
+  font-family: "Rowdies", cursive;
   box-sizing: border-box;
 }
 
 #root {
+  /* padding-left: 20%;
+  padding-right: 20%; */
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -15,39 +17,97 @@
 
 body {
   margin: 0;
-  font-size: 17px;
-  background-color: #a393eb;
 }
 
-ul {
+/* ================================ HEADER ================================ */
+
+header {
+  height: 20%;
+}
+
+.nav_bar {
+  padding: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 35%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0px 5px 0px 5px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav_bar li {
   list-style: none;
-  padding: 0;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu_btn {
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  font-size: 20px;
+  color: #293c7d;
+  height: 50px;
+  width: 115px;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.menu_btn:hover {
+  border: 3px solid #293c7d;
+  border-radius: 5px;
+  background-color: #27296d;
+  color: white;
+  transition: all 0.3s ease;
+}
+h1 {
+  text-align: center;
+  color: #293c7d;
+  font-size: 50px;
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-  color: #2d3233;
+/* ================================ BODY ================================ */
+/* ================================ MAIN PAGE ================================ */
+
+.main_main {
+  height: 75%;
+  display: flex;
+  justify-content: space-around;
 }
 
-button {
-  background-color: #3e99c0;
-  border-radius: 8px;
-  border-width: 0px;
-  font-weight: 295;
-  color: rgb(255, 255, 255);
-  padding: 5px;
-  font-size: 17px;
+.main_meals_div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
-h1 {
-  font-family: "Roboto Slab", serif;
-  color: #27296d;
+
+.about_meals {
   width: 100%;
-  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about_meals p {
+  width: 50%;
   text-align: center;
 }
-.meal_div {
-  font-family: "Roboto Slab", serif;
+
+.main_meals_item {
+  font-family: "Rowdies", cursive;
   display: flex;
   flex-wrap: wrap;
   border: 2px solid #27296d;
@@ -57,28 +117,363 @@ h1 {
   background-color: #f5c7f7;
 }
 
-.meal_div h2 {
+.main_meals_item h2 {
   font-weight: 800;
-  font-family: "Roboto Slab", serif;
+  font-family: "Rowdies", cursive;
   color: #27296d;
-  font-size: 20px;
+  font-size: 25px;
   width: 100%;
   text-align: center;
 }
 
-.meal_desc {
+.main_meals_btn_border {
+  width: 100%;
+  text-align: center;
+  height: 50px;
+}
+
+.main_meals_btn {
+  padding: 10px 10px 10px 10px;
+  font-size: 25px;
+  color: #293c7d;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.main_meals_btn:hover {
+  font-weight: 800;
+  border: 3px solid #293c7d;
+  border-radius: 5px;
+  background-color: #27296d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.main_meal_desc {
+  font-family: "Rowdies", cursive;
+  color: #5e63b6;
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+}
+
+.main_meal_price {
   font-family: "Roboto Slab", serif;
+  color: #27296d;
+  width: 50%;
+  font-size: 25px;
+  margin: 55px 0px 0px 0px;
+  font-weight: 800;
+}
+
+.main_meal_ref_btn {
+  width: 120px;
+  height: 50px;
+  text-decoration: none;
+  font-size: 17px;
+  border: 3px solid #27296d;
+  text-align: center;
+  margin: 40px 0px 0px 110px;
+  border-radius: 5px;
+}
+
+.main_meal_ref_btn:hover {
+  background-color: #27296d;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* ================================ ALL MEALS ================================ */
+.all_meals_main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.all_meals_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+.all_meals_meal_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+  border: 3px solid #27296d;
+  border-radius: 5px;
+  background-color: #f5c7f7;
+}
+
+.all_meals_meal_item {
+  font-family: "Rowdies", cursive;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid #27296d;
+  height: 310px;
+  width: 35%;
+  padding: 10px;
+  background-color: #f5c7f7;
+}
+
+.all_meals_meal_div h2 {
+  font-weight: 800;
+  font-family: "Rowdies", cursive;
+  color: #27296d;
+  font-size: 35px;
+  width: 100%;
+  text-align: center;
+}
+
+.all_meals_meal_desc {
+  font-family: "Rowdies", cursive;
   color: #5e63b6;
   width: 100%;
   font-size: 14px;
-  text-align: center;
+  text-align: start;
 }
 
-.meal_price {
+.all_meals_meal_price {
+  font-family: "Roboto Slab", serif;
+  color: #27296d;
+  width: 40%;
+  font-size: 35px;
+  margin: 40px 0px 0px 0px;
+  font-weight: 800;
+}
+
+.all_meals_meal_ref_btn {
+  width: 120px;
+  height: 50px;
+  text-decoration: none;
+  font-size: 17px;
+  border: 3px solid #27296d;
+  text-align: center;
+  margin: 35px 35px 15px 245px;
+  border-radius: 5px;
+}
+
+.all_meals_meal_ref_btn:hover {
+  background-color: #27296d;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* ================================ MEAL BY ID ================================ */
+.meal_by_id {
+  min-height: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.meal_by_id_div {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.about_meal {
+  display: flex;
+  flex-wrap: wrap;
+}
+.meal_by_id_div h2 {
+  font-family: "Rowdies", cursive;
+  font-size: 40px;
+  text-decoration: underline;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  color: #27296d;
+  margin: 0px 0px 20px 0px;
+}
+
+.meal_by_id_desc {
+  font-family: "Rowdies", cursive;
+  color: #5e63b6;
+  width: 100%;
+  font-size: 18px;
+  margin: 0;
+  text-align: center;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meal_by_id_price {
   font-family: "Roboto Slab", serif;
   color: #27296d;
   width: 100%;
+  font-size: 35px;
+  margin: 0px 0px 20px 0px;
+  text-align: center;
+  font-weight: 800;
+}
+/* ================================ RESERVATION DIV ================================ */
+.reservationForm_div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.reservationForm_div h3 {
+  font-family: "Rowdies", cursive;
   font-size: 25px;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  color: #27296d;
+}
+.reservationForm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  justify-content: space-evenly;
+}
+.reserv_input {
+  width: 50%;
+  margin: 5px 0px 5px 0px;
+  border-color: #27296d;
+  height: 25px;
+}
+.reserv_label {
+  width: 40%;
+  text-align: end;
+  margin: 5px 0px 5px 0px;
+  height: 25px;
+  font-size: 17px;
+  color: #27296d;
+}
+.submit_btn {
+  width: 180px;
+  height: 45px;
+  text-decoration: none;
+  font-size: 17px;
+  border: 3px solid #27296d;
+  text-align: center;
+  border-radius: 5px;
+  margin: 10px 0px 10px 0px;
+  background: white;
+}
+.submit_btn:hover {
+  border: 3px solid #293c7d;
+  border-radius: 5px;
+  background-color: #27296d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+/* ================================ REVIEW DIV ================================ */
+.reviewDiv {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.reviewDiv p {
+  width: 100%;
+  height: 50px;
+  font-family: "Rowdies", cursive;
+  font-size: 18px;
+  margin: 0px;
+  text-align: center;
+  color: #27296d;
+}
+.show_form_btn {
+  width: 180px;
+  height: 45px;
+  text-decoration: none;
+  font-size: 17px;
+  border: 3px solid #27296d;
+  text-align: center;
+  border-radius: 5px;
+  margin: 10px 0px 10px 0px;
+  background: white;
+}
+.show_form_btn:hover {
+  border: 3px solid #293c7d;
+  border-radius: 5px;
+  background-color: #27296d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+.reviewForm_div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.reviewForm_div h3 {
+  font-family: "Rowdies", cursive;
+  font-size: 25px;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  color: #27296d;
+}
+.reviewForm {
+  width: 50%;
+  min-height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.review_input {
+  width: 50%;
+  margin: 5px 0px 5px 0px;
+  border-color: #27296d;
+  height: 25px;
+}
+.review_descr {
+  width: 50%;
+  height: 100px;
+  text-align: start;
+  padding: 11px 0px 11px 0px;
+  border-color: #27296d;
+  border-style: inset;
+  padding: 7px;
+  border-width: 2px;
+}
+.review_label {
+  width: 40%;
+  text-align: end;
+  margin: 5px 0px 5px 0px;
+  height: 25px;
+  font-size: 17px;
+  color: #27296d;
+}
+.rateDiv {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.rateDiv h3 {
+  width: 45%;
+  font-size: 17px;
+  text-align: end;
+}
+.react-stars-wrapper-05230846714310367 {
+  width: 50%;
+}
+/* ================================ FOOTER ================================ */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5%;
+  margin: 0;
+  background-color: #293c7d;
+}
+footer p {
+  color: white;
+  font-size: 10px;
+  font-weight: 300;
 }
 
 @media screen and (max-width: 1400px) {
