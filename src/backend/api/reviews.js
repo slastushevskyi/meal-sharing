@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   try {
     const newReview = req.body;
     const [id] = await knex("Review").insert(newReview);
-    if ([id]) {
+    if (id) {
       res.status(201).json({
         message: "New review added successfully",
       });

@@ -130,21 +130,21 @@ router.get("/", async (req, res) => {
           .select()
           .from("Meal")
           .where("title", "like", `%${value}%`);
-        res.status(200).json(await meals);
+        res.status(200).json(meals);
         // Returns all meals where the date for when is after the given date.
       } else if (key === "dateAfter") {
         const meals = await knex
           .select()
           .from("Meal")
           .where("when", ">", `${value}`);
-        res.status(200).json(await meals);
+        res.status(200).json(meals);
         // Returns all meals where the date for when is before the given date.
       } else if (key === "dateBefore") {
         const meals = await knex
           .select()
           .from("Meal")
           .where("when", "<", `${value}`);
-        res.status(200).json(await meals);
+        res.status(200).json(meals);
         // Returns the given number of meals.
       } else if (key === "limit") {
         const meals = await knex.select().from("Meal").limit(`${value}`);
@@ -164,10 +164,10 @@ router.get("/", async (req, res) => {
             .select()
             .from("Meal")
             .orderBy(`${req.query.sortKey}`, `${req.query.sortDir}`);
-          return res.status(200).json(await meals);
+          return res.status(200).json(meals);
         } else {
           const meals = await knex.select().from("Meal").orderBy(`${value}`);
-          res.status(200).json(await meals);
+          res.status(200).json(meals);
         }
       } else {
         res.status(404).json({ message: "Wrong query" });
@@ -188,7 +188,7 @@ router.get("/:id/reviews", async (req, res) => {
     if (reviews.length === 0) {
       res.status(404).json({ error: "Review(s) Not Found" });
     } else {
-      res.status(200).json(await reviews);
+      res.status(200).json(reviews);
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
