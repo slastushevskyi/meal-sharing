@@ -26,11 +26,25 @@ app.use(cors());
 
 router.use("/meals", mealsRouter);
 router.use("/reservations", reservationsRouter);
+router.use("/reviews", reviewsRouter);
 
 // Respond with all meals in the future (relative to the when datetime)
 app.get("/future-meals", (req, res) => {
   knex
     .raw("SELECT * FROM Meal WHERE 'when'>'GETDATE()'")
+    .then((rows) => {
+      res.end(JSON.stringify(rows[0]));
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).end("Internal Server Error");
+    });
+});
+
+// For React 2 week 2 (Render some (not all!) of the meals found in the database...)
+app.get("/", (req, res) => {
+  knex
+    .raw("SELECT * FROM Meal ORDER BY id LIMIT 2")
     .then((rows) => {
       res.end(JSON.stringify(rows[0]));
     })

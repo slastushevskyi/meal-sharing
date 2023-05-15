@@ -24,7 +24,9 @@ router.get("/:id", async (req, res) => {
     const requestedId = parseInt(req.params.id);
     const meal = await knex("Meal").select().where("id", requestedId);
     if (!meal.length) {
-      res.status(404).end(`Meal Id: ${requestedId} Not Found`);
+      return res
+        .status(404)
+        .json([{ data: `Meal Id: ${requestedId} Not Found`, id: requestedId }]);
     }
     res.status(200).json(meal);
   } catch (error) {
