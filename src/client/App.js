@@ -10,9 +10,6 @@ import MealByIdComponent from "./components/MealByIdComponents/MealByIdComponent
 function App() {
   return (
     <Router>
-      <Route exact path="/all-meals">
-        <MealListComponent />
-      </Route>
       <Route exact path="/">
         <HeaderComponent />
         <MainPageMealComponent />
