@@ -7,8 +7,6 @@
 }
 
 #root {
-  /* padding-left: 20%;
-  padding-right: 20%; */
   height: 100vh;
 }
 
@@ -98,9 +96,12 @@ h1 {
   flex-wrap: wrap;
 }
 
-.about_meals p {
+.about_meals_p {
   width: 50%;
   text-align: center;
+  font-family: "Rowdies", cursive;
+  color: #5e63b6;
+  font-size: 18px;
 }
 
 .main_meals_item {
@@ -133,10 +134,11 @@ h1 {
   padding: 10px 10px 10px 10px;
   font-size: 25px;
   color: #293c7d;
-  border: 3px solid transparent;
   border-radius: 5px;
   text-decoration: none;
   font-weight: 800;
+  border: 3px solid #293c7d;
+  background-color: #f5c7f7;
 }
 
 .main_meals_btn:hover {
@@ -187,6 +189,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 75%;
 }
 
 .all_meals_div {
@@ -227,32 +230,44 @@ h1 {
   text-align: center;
 }
 
-.all_meals_meal_desc {
-  font-family: "Rowdies", cursive;
-  color: #5e63b6;
-  width: 100%;
-  font-size: 14px;
-  text-align: start;
+.all_meals_meal_maxreservation {
+  font-family: "Roboto Slab", serif;
+  color: #27296d;
+  width: 50%;
+  font-size: 30px;
+  margin: 40px 0px 0px 0px;
+  font-weight: 800;
 }
 
 .all_meals_meal_price {
   font-family: "Roboto Slab", serif;
   color: #27296d;
-  width: 40%;
+  width: 50%;
   font-size: 35px;
   margin: 40px 0px 0px 0px;
   font-weight: 800;
 }
+.butn_wrapper {
+  width: 50%;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
 
 .all_meals_meal_ref_btn {
+  display: flex;
   width: 120px;
   height: 50px;
   text-decoration: none;
   font-size: 17px;
   border: 3px solid #27296d;
   text-align: center;
-  margin: 35px 35px 15px 245px;
   border-radius: 5px;
+  color: #27296d;
+  justify-content: center;
+  align-items: center;
 }
 
 .all_meals_meal_ref_btn:hover {
@@ -261,6 +276,62 @@ h1 {
   transition: background-color 0.3s ease-in-out;
 }
 
+/* ================================ ALL MEALS  SORT COMPONENT ================================ */
+.sortDiv {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+  border: 3px solid #27296d;
+  border-radius: 5px;
+  background-color: #f5c7f7;
+}
+.searchInput_wrapper {
+  width: 100%;
+}
+.sort_wrapper {
+  width: 33.3%;
+  display: flex;
+  flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.searchInput_wrapper h3 {
+  font-family: "Rowdies", cursive;
+  font-size: 25px;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  color: #27296d;
+}
+.searchInput {
+  width: 50%;
+  margin: 10px 0px 10px 0px;
+  border-color: #27296d;
+  height: 45px;
+}
+.sortBy_p {
+  font-size: 18px;
+}
+
+.sortBtn {
+  display: none;
+}
+.fafa_icon {
+  font-size: 30px;
+  color: #27296d;
+  border: 3px solid #27296d;
+  border-radius: 5px;
+  margin: 0px 5px 0px 5px;
+}
+.sortBtn:checked + label .fafa_icon {
+  color: white;
+  background-color: #27296d;
+}
 /* ================================ MEAL BY ID ================================ */
 .meal_by_id {
   min-height: 75%;
@@ -273,10 +344,13 @@ h1 {
   width: 50%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .about_meal {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .meal_by_id_div h2 {
   font-family: "Rowdies", cursive;
@@ -311,6 +385,23 @@ h1 {
   margin: 0px 0px 20px 0px;
   text-align: center;
   font-weight: 800;
+}
+.meal_by_id_available {
+  font-family: "Roboto Slab", serif;
+  color: #27296d;
+  width: 100%;
+  font-size: 30px;
+  margin: 0px 0px 20px 0px;
+  text-align: center;
+  font-weight: 800;
+  text-decoration: underline;
+}
+.meal_not_found {
+  width: 100%;
+  text-align: center;
+  font-family: "Rowdies", cursive;
+  color: #5e63b6;
+  font-size: 25px;
 }
 /* ================================ RESERVATION DIV ================================ */
 .reservationForm_div {
@@ -458,6 +549,138 @@ h1 {
 .react-stars-wrapper-05230846714310367 {
   width: 50%;
 }
+/* ================================ REVIEWS BY MEAL ID ================================ */
+.reviews_by_id_main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 75%;
+  align-items: center;
+}
+.reviews_by_id_main h2 {
+  font-weight: 800;
+  font-family: "Rowdies", cursive;
+  color: #27296d;
+  font-size: 35px;
+  width: 50%;
+  text-align: center;
+  height: 50px;
+}
+
+.all_meals_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+.all_meals_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.review_by_id_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  text-align: center;
+  margin: 15px;
+  border: 3px solid #27296d;
+  border-radius: 5px;
+  background-color: #f5c7f7;
+  min-height: 200px;
+}
+.review_by_id_div h3 {
+  font-family: "Rowdies", cursive;
+  font-size: 25px;
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  color: #27296d;
+}
+.review_by_id_descr {
+  font-family: "Rowdies", cursive;
+  color: #27296d;
+  width: 100%;
+  font-size: 22px;
+  font-weight: 300;
+}
+.review_title {
+  font-family: "Rowdies", cursive;
+  font-size: 20px;
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  color: #27296d;
+}
+.rate_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.all_reivews_main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 75%;
+  align-items: center;
+}
+.all_reviews_div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 75%;
+  align-items: center;
+  width: 50%;
+}
+.all_reviews_div h2 {
+  font-weight: 800;
+  font-family: "Rowdies", cursive;
+  color: #27296d;
+  font-size: 35px;
+  width: 50%;
+  text-align: center;
+  height: 50px;
+}
+.all_meal_reviews_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+  border: 3px solid #27296d;
+  border-radius: 5px;
+  background-color: #f5c7f7;
+}
+.all_meal_reviews_div h3 {
+  font-family: "Rowdies", cursive;
+  font-size: 25px;
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  color: #27296d;
+}
+/* ================================ ABOUT ================================ */
+.about_main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 75%;
+  align-items: center;
+}
+
+.about_p {
+  width: 50%;
+  text-align: center;
+  font-family: "Rowdies", cursive;
+  color: #5e63b6;
+  font-size: 30px;
+}
+
 /* ================================ FOOTER ================================ */
 footer {
   display: flex;
@@ -471,6 +694,10 @@ footer p {
   color: white;
   font-size: 10px;
   font-weight: 300;
+}
+footer a {
+  font-size: 10px;
+  color: white;
 }
 
 @media screen and (max-width: 1400px) {

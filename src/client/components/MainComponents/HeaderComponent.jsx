@@ -22,12 +22,12 @@ const HeaderComponent = () => {
               </a>
             </li>
             <li>
-              <a className="menu_btn" href="">
+              <a className="menu_btn" href="http://localhost:3000/reviews">
                 Reviews
               </a>
             </li>
             <li>
-              <a className="menu_btn" href="">
+              <a className="menu_btn" href="http://localhost:3000/about">
                 About
               </a>
             </li>

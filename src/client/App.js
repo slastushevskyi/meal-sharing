@@ -6,6 +6,9 @@ import HeaderComponent from "./components/MainComponents/HeaderComponent";
 import FooterComponent from "./components/MainComponents/FooterComponent";
 import MainPageMealComponent from "./components/MealComponents/MainPageMealComponents/MainPageMealComponent";
 import MealByIdComponent from "./components/MealByIdComponents/MealByIdComponent";
+import AllReviewsComponent from "./components/ReviewComponents/AllReviewsComponent";
+import ReviewByMealIdComponent from "./components/ReviewComponents/ReviewByMealIdComponent";
+import AboutComponent from "./components/AboutComponent/AboutComponent";
 
 function App() {
   return (
@@ -25,8 +28,20 @@ function App() {
         <MealByIdComponent />
         <FooterComponent />
       </Route>
-      <Route exact path="/lol">
-        <p>lol</p>
+      <Route exact path="/meals/:id/reviews">
+        <HeaderComponent />
+        <ReviewByMealIdComponent />
+        <FooterComponent />
+      </Route>
+      <Route exact path="/reviews">
+        <HeaderComponent />
+        <AllReviewsComponent />
+        <FooterComponent />
+      </Route>
+      <Route exact path="/about">
+        <HeaderComponent />
+        <AboutComponent />
+        <FooterComponent />
       </Route>
       <Route exact path="/test-component">
         <TestComponent></TestComponent>
