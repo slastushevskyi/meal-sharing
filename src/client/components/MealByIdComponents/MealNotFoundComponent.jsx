@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const MealNotFoundComponent = ({ meal }) => {
   return (
     <>
-      <h2>{meal.data}</h2>
+      <h2 className="about_meal_p">{meal.data}</h2>
     </>
   );
 };

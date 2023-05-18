@@ -19,7 +19,7 @@ const MainPageMealComponent = () => {
     <main className="main_main">
       <div className="main_meals_div">
         <div className="about_meals">
-          <p>
+          <p className="about_meals_p">
             Meals are an essential part of our daily lives, providing us with
             the necessary sustenance and energy to carry out our daily
             activities. A well-balanced meal contains a variety of nutrients,

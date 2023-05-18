@@ -52,7 +52,6 @@ router.get("/", async (req, res) => {
             .leftJoin("Reservation", "Reservation.meal_id", "Meal.id")
             .groupBy("Meal.id")
             .having("remaining_reservation", "<", 0);
-
           res.json(mealsWithRemainingReservations);
         }
         // Returns all meals that partially match the given title.
@@ -86,7 +85,6 @@ router.get("/", async (req, res) => {
         // Default sorting order is asc(ending).
       } else if (
         req.query.sortKey === "when" ||
-        req.query.sortKey === "max_reservations" ||
         req.query.sortKey === "price"
       ) {
         // Returns all meals sorted in the given direction.
@@ -99,6 +97,20 @@ router.get("/", async (req, res) => {
           return res.status(200).json(meals);
         } else {
           const meals = await knex.select().from("Meal").orderBy(`${value}`);
+          res.status(200).json(meals);
+        }
+      } else if (req.query.sortKey === "max_reservations") {
+        if (req.query.sortDir) {
+          const meals = await knex
+            .select()
+            .from("Meal")
+            .orderBy(`maxreservation`, `${req.query.sortDir}`);
+          return res.status(200).json(meals);
+        } else {
+          const meals = await knex
+            .select()
+            .from("Meal")
+            .orderBy(`maxreservation`);
           res.status(200).json(meals);
         }
       } else {
@@ -187,8 +199,13 @@ router.get("/:id/reviews", async (req, res) => {
     const reviews = await knex("Review")
       .select()
       .where("meal_id", `${requestedId}`);
-    if (reviews.length === 0) {
-      res.status(404).json({ error: "Review(s) Not Found" });
+    if (!reviews.length) {
+      return res.status(404).json([
+        {
+          data: `There are no reviews for this meal.`,
+          id: requestedId,
+        },
+      ]);
     } else {
       res.status(200).json(reviews);
     }

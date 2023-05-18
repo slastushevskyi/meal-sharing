@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import ReservationFormComponent from "./ReservationFormComponent";
 import PropTypes from "prop-types";
 
-const MealReservationComponent = ({ meal }) => {
+const MealReservationComponent = ({
+  meal,
+  fetchedAvailableMeals,
+  setFetchedAvailableMeals,
+}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [amount, setAmount] = useState("");
-  const [fetchedAvailableMeals, setFetchedAvailableMeals] = useState([]);
   const [reviewSend, setReviewSend] = useState(false);
   // meal id from props
   const id = meal.id;
@@ -78,8 +81,8 @@ const MealReservationComponent = ({ meal }) => {
       amount={amount}
     />
   ) : (
-    <p>
-      Unfortunately there are no available meals to order. Please, chose
+    <p className="meal_not_found">
+      Unfortunately there are no available meals to order. Please, choose
       something else!
     </p>
   );

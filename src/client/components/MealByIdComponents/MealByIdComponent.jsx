@@ -16,7 +16,7 @@ const MealByIdComponent = () => {
 
   if (!meals) {
     <main className="meal_by_id">
-      return <p>Loading...</p>;
+      <p>Loading...</p>
     </main>;
   }
   return (

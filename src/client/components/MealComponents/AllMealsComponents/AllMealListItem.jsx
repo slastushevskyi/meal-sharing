@@ -6,12 +6,26 @@ const AllMealListItem = ({ meal }) => {
     <>
       <h2>{meal.title}</h2>
       <p className="all_meals_meal_price">{meal.price} dkk</p>
-      <a
-        className="all_meals_meal_ref_btn"
-        href={`http://localhost:3000/meals/${meal.id}`}
-      >
-        Click for more
-      </a>
+      <p className="all_meals_meal_maxreservation">
+        Max reservations: {meal.maxreservation}
+      </p>
+      <div className="butn_wrapper">
+        <a
+          className="all_meals_meal_ref_btn"
+          href={`http://localhost:3000/meals/${meal.id}`}
+        >
+          Click for more
+        </a>
+      </div>
+      <div className="butn_wrapper">
+        {" "}
+        <a
+          className="all_meals_meal_ref_btn"
+          href={`http://localhost:3000/meals/${meal.id}/reviews`}
+        >
+          See the reviews
+        </a>
+      </div>
     </>
   );
 };
