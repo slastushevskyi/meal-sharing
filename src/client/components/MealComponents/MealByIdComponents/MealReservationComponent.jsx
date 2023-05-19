@@ -11,7 +11,7 @@ const MealReservationComponent = ({
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [amount, setAmount] = useState("");
-  const [reviewSend, setReviewSend] = useState(false);
+  const [reviewSend, setReservationSend] = useState(false);
   // meal id from props
   const id = meal.id;
   // Checking if current meal in list of meals with available reservations
@@ -60,7 +60,7 @@ const MealReservationComponent = ({
       // if response is ok it shows message, clear inputs and updating data
       // of available meals with useEffect hook
       response.ok
-        ? (alert(data.message), clearInput(), setReviewSend(true))
+        ? (alert(data.message), clearInput(), setReservationSend(true))
         : alert(data.error);
     } catch (error) {
       console.log(error);
