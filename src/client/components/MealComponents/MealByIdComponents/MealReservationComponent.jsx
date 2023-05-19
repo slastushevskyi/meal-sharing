@@ -11,7 +11,7 @@ const MealReservationComponent = ({
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [amount, setAmount] = useState("");
-  const [reviewSend, setReservationSend] = useState(false);
+  const [reservationSend, setReservationSend] = useState(false);
   // meal id from props
   const id = meal.id;
   // Checking if current meal in list of meals with available reservations
@@ -24,7 +24,7 @@ const MealReservationComponent = ({
       .then((response) => response.json())
       .then((data) => setFetchedAvailableMeals(data))
       .catch((error) => console.log(error));
-  }, [reviewSend]);
+  }, [reservationSend]);
 
   const clearInput = () => {
     setName("");
