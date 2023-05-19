@@ -90,6 +90,8 @@ const MealReservationComponent = ({
 
 MealReservationComponent.propTypes = {
   meal: PropTypes.object.isRequired,
+  fetchedAvailableMeals: PropTypes.array.isRequired,
+  setFetchedAvailableMeals: PropTypes.func.isRequired,
 };
 
 export default MealReservationComponent;

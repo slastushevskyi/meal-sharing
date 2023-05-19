@@ -35,7 +35,7 @@ const AllMealsSortComponent = ({
           <FaArrowDown className="fafa_icon" />
         </label>
       </div>
-      <div className="sort_wrapper">
+      <div className="sort_wrapper_2">
         <input
           id="sort_by_reservations_asc"
           type="radio"

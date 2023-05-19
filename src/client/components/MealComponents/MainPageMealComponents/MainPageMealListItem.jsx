@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const MainPageMealListItem = ({ meal }) => {
   return (
@@ -14,6 +15,10 @@ const MainPageMealListItem = ({ meal }) => {
       </a>
     </>
   );
+};
+
+MainPageMealListItem.propTypes = {
+  meal: PropTypes.object.isRequired,
 };
 
 export default MainPageMealListItem;

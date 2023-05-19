@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MealReservationComponent from "./MealReservationComponent";
-import ReviewComponent from "../ReviewComponents/ReviewComponent";
+import ReviewComponent from "../../ReviewComponents/ReviewComponent";
 import PropTypes from "prop-types";
 
 const MealByIdItemComponent = ({ meal }) => {
