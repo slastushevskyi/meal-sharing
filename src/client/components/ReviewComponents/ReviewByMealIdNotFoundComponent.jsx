@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ReviewByMealIdNotFoundComponent = ({ review }) => {
-  return <p>{review.data}</p>;
+  return <p className="review_by_id_descr">{review.data}</p>;
 };
 
 ReviewByMealIdNotFoundComponent.propTypes = {

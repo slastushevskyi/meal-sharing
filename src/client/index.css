@@ -229,6 +229,13 @@ h1 {
   width: 100%;
   text-align: center;
 }
+.all_meals_meal_created {
+  font-family: "Roboto Slab", serif;
+  color: #27296d;
+  font-size: 25px;
+  font-weight: 800;
+  width: 100%;
+}
 
 .all_meals_meal_maxreservation {
   font-family: "Roboto Slab", serif;
@@ -291,7 +298,16 @@ h1 {
   width: 100%;
 }
 .sort_wrapper {
-  width: 33.3%;
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.sort_wrapper_2 {
+  width: 40%;
   display: flex;
   flex-wrap: wrap;
   display: flex;
@@ -316,6 +332,7 @@ h1 {
 }
 .sortBy_p {
   font-size: 18px;
+  color: #27296d;
 }
 
 .sortBtn {

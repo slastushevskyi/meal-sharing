@@ -5,7 +5,7 @@ import AllMealsListComponent from "./components/MealComponents/AllMealsComponent
 import HeaderComponent from "./components/MainComponents/HeaderComponent";
 import FooterComponent from "./components/MainComponents/FooterComponent";
 import MainPageMealComponent from "./components/MealComponents/MainPageMealComponents/MainPageMealComponent";
-import MealByIdComponent from "./components/MealByIdComponents/MealByIdComponent";
+import MealByIdComponent from "./components/MealComponents/MealByIdComponents/MealByIdComponent";
 import AllReviewsComponent from "./components/ReviewComponents/AllReviewsComponent";
 import ReviewByMealIdComponent from "./components/ReviewComponents/ReviewByMealIdComponent";
 import AboutComponent from "./components/AboutComponent/AboutComponent";
